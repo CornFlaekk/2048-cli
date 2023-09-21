@@ -4,45 +4,36 @@ public class Printer {
     int[][] valueArray;
     int[] possibleValues = {0,2,4,8,16,32,64,128,256,512,1024};
     String emptyLine = "---------------------------------"; // 33 '-'
-    String ANSI_GREEN_BG = "\u001B[42m";
-    String ANSI_GREEN_FG = "\u001B[32m";
     String ANSI_RESET = "\u001B[0m";
 
     public Printer() {
-        valueArray = new int[arrayLength][arrayHeight];
-        fillArray();
-    }
-
-    void fillArray() {
-        for (int length = 0; length < arrayLength; length++) {
-            for (int height = 0; height < arrayHeight; height++) {
-                valueArray[length][height] = possibleValues[(int) Math.round(Math.random()*10)];
-            }
-        }
     }
 
     public void clearConsole() {
         System.out.println(System.lineSeparator().repeat(50));
     }
 
-    void drawEmpty() {
-        System.out.println(emptyLine);
-        for (int i = 0; i < arrayHeight; i++) {
-            drawNumberLine(i);
-            System.out.println("\n" + emptyLine);
-        }
-
+    void updateValues(GameLogic game) {
+        valueArray = game.valueArray;
     }
 
-    void drawNumberLine(int lineHeight){
+    void drawGame() {
+        System.out.println(emptyLine);
+        for (int i = 0; i < arrayHeight; i++) {
+            drawGameNumbersLine(i);
+            System.out.println("\n" + emptyLine);
+        }
+    }
+
+    void drawGameNumbersLine(int lineHeight){
         System.out.print("|");
         for (int i = 0; i < arrayLength; i++) {
-            printNumberString(lineHeight, i);
+            drawGameNumberString(lineHeight, i);
             System.out.print("|");
         }
     }
 
-    void printNumberString(int numHeight, int numWidth) {
+    void drawGameNumberString(int numHeight, int numWidth) {
         
         int number = valueArray[numWidth][numHeight];
         String res = new String();
