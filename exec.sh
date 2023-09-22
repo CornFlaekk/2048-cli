@@ -1,8 +1,6 @@
 #!/bin/bash
-javac App.java
-javac Printer.java
-javac InputManager.java
-javac GameLogic.java
+
+gum spin javac App.java Printer.java InputManager.java GameLogic.java --spinner dot --title "Compiling Java files..."
 
 mv *.class target/
 
