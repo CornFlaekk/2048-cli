@@ -20,6 +20,7 @@ public class InputManager {
 
         String movement = "";
         input = Character.toLowerCase(input);
+        System.out.println(input);
 
         switch (input) {
             case 'w':
@@ -36,6 +37,9 @@ public class InputManager {
                 break;
             case 'q':
                 movement = "quit";
+                break;
+            case '\n':
+                break;
             default:
                 break;
         }

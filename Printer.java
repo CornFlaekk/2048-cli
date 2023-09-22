@@ -13,8 +13,8 @@ public class Printer {
         System.out.println(System.lineSeparator().repeat(50));
     }
 
-    void updateValues(GameLogic game) {
-        valueArray = game.valueArray;
+    void updateValues(int[][] receivedArray) {
+        valueArray = receivedArray;
     }
 
     void drawGame() {

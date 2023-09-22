@@ -5,19 +5,19 @@ class App{
     static InputManager in = new InputManager();
     public static void main(String[] args) {
         
-        gameCycle();
-        gameCycle();
+        while(true){
+            gameCycle();
+        }
         
     }
 
     static void gameCycle(){
-        printer.updateValues(game);
+        
         printer.clearConsole();
+        printer.updateValues(game.getValueArray());
         printer.drawGame();
 
-        String str = in.readChar();
-        game.movement(str);
-
+        game.movement(in.readChar());
 
     }
 }

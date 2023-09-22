@@ -26,6 +26,30 @@ public class GameLogic {
 
     }
 
+    void addNumber() {
+        int rand = (int) Math.round(Math.random() * 100);
+        int newNumberValue = 0;
+
+        if (rand <= 70) {
+            newNumberValue = 2;
+        } else if (rand <= 95) {
+            newNumberValue = 4;
+        } else {
+            newNumberValue = 8;
+        }
+
+        int randl = (int) Math.round(Math.random() * (arrayLength - 1));
+        int randh = (int) Math.round(Math.random() * (arrayHeight - 1));
+
+        while (valueArray[randl][randh] != 0) {
+            randl = (int) Math.round(Math.random() * (arrayLength - 1));
+            randh = (int) Math.round(Math.random() * (arrayHeight - 1));
+        }
+        valueArray[randl][randh] = newNumberValue;
+
+
+    }
+
     /**
      * Fill array with random values. Used for testing
      */
@@ -46,15 +70,25 @@ public class GameLogic {
         switch (direction) {
             case "up":
                 movement_up();
+                addNumber();
                 break;
             case "down":
                 movement_down();
+                addNumber();
                 break;
             case "right":
                 movement_right();
+                addNumber();
                 break;
             case "left":
                 movement_left();
+                addNumber();
+                break;
+            case "quit":
+
+                break;
+            case "endline":
+
                 break;
             default:
                 break;
@@ -189,6 +223,9 @@ public class GameLogic {
         }
     }
 
+    int[][] getValueArray(){
+        return valueArray;
+    }
     
 
 }
